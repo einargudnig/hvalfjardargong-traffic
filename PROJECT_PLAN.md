@@ -164,3 +164,31 @@ export const TrafficStatusSchema = z.object({
   score: z.number(),
 });
 ```
+
+# Testing Setup Plan
+
+## Overview
+This project uses Vitest for unit/integration tests and Playwright for E2E tests. All tests run locally and in CI (GitHub Actions). Background agents and pre-deploy hooks can run tests via CLI.
+
+## How to Run Tests Locally
+- **Unit/Integration:**
+  - `npm run test` (runs Vitest)
+- **E2E:**
+  - Start the app: `npm run build && npm run start`
+  - In another terminal: `npm run test:e2e` (runs Playwright)
+
+## How to Run Tests in CI
+- All tests run automatically on push/PR to `main` via GitHub Actions (`.github/workflows/test.yml`).
+- The workflow runs Vitest, builds the app, starts the server, waits for it, then runs Playwright E2E tests.
+
+## Adding More Tests
+- Add Vitest tests in `__tests__` or colocated with code.
+- Add Playwright E2E tests in `tests/` directory.
+
+## Background Agents
+- Any agent or script can run `npm run test` and `npm run test:e2e` before deploy or as a health check.
+
+## References
+- [Next.js Vitest Guide](https://nextjs.org/docs/app/guides/testing/vitest)
+- [Next.js Playwright Guide](https://nextjs.org/docs/app/guides/testing/playwright)
+- [Playwright CI Docs](https://playwright.dev/docs/ci)
