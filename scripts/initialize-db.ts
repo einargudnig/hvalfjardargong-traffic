@@ -32,8 +32,8 @@ INSERT INTO tunnels (id, name, north_entrance_location, south_entrance_location)
 VALUES (
   '00000000-0000-0000-0000-000000000001',
   'Sample Tunnel',
-  point(37.7749, -122.4194), -- Sample coordinates (North entrance)
-  point(37.7833, -122.4167)  -- Sample coordinates (South entrance)
+  point(64.1375, -21.8952), -- Ljosheimar 14-18, 104 Reykjavik (North entrance)
+  point(64.1370, -21.8945)  -- Nearby point (South entrance)
 )
 ON CONFLICT DO NOTHING;
 `;

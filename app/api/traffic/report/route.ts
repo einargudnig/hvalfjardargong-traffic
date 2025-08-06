@@ -39,6 +39,14 @@ export async function POST(request: Request) {
       report.coordinates
     );
     
+    // Reject if location is not valid
+    if (!isLocationValid) {
+      return NextResponse.json(
+        { error: 'User is not at the required location' },
+        { status: 403 }
+      );
+    }
+
     // Update the geolocation verification status based on check
     const verifiedReport = {
       ...report,
